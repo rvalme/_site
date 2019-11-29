@@ -39,21 +39,25 @@ HELLO_WORLD = """<html>
 import os.path
 
 # tornado imports
-import tornado.httpserver
 import tornado.ioloop
 import tornado.options
-import tornado.wsgi
+import tornado.web
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('_site/index.html')
+        self.render('index.html')
 
-application = tornado.wsgi.WSGIApplication(
+app = tornado.web.Application(
     handlers=[(r'/', MainHandler),
     (r'/(.*)', tornado.web.StaticFileHandler,
-        {'path': os.path.join(os.path.dirname(__file__), '_site')})],
+        {'path': os.path.dirname(__file__)})],
     debug=True
     )
+
+if __name__ == "__main__":
+    app.listen(8888)
+    tornado.ioloop.IOLoop.instance().start()
+
 
 # Below are templates for Django and Flask.  You should update the file
 # appropriately for the web framework you're using, and then
