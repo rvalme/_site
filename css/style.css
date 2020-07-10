@@ -7,9 +7,18 @@ body {
     color: #333333;
     font-family: helvetica, arial, sans-serif;
     /*background-image: url("/imgs/hydra4.jpg");*/
-    background-image: url("/imgs/nightdra2.jpg"); /*day and night change img and nav, in the future make an animation maybe add sound?*/
+    background: url("/imgs/nightdra2.jpg") no-repeat center center; /*day and night change img and nav, in the future make an animation maybe add sound?*/
     background-repeat: no-repeat;/* flowers moving in the wind*/
     background-attachment: fixed;
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    z-index: -10;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6 {
